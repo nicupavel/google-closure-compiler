@@ -87,6 +87,11 @@ class StripCode implements CompilerPass {
     stripTypes.add("goog.tweak");
   }
 
+  public void enableConsoleStripping() {
+    stripTypes.add("console");
+  }
+
+
   @Override
   public void process(Node externs, Node root) {
     NodeTraversal.traverse(compiler, root, new Strip());

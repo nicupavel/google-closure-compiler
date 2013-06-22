@@ -836,7 +836,7 @@ public class Compiler extends AbstractCompiler {
       removeTryCatchFinally();
     }
 
-    if (options.getTweakProcessing().shouldStrip() ||
+    if (options.removeConsoleCalls || options.getTweakProcessing().shouldStrip() ||
         !options.stripTypes.isEmpty() ||
         !options.stripNameSuffixes.isEmpty() ||
         !options.stripTypePrefixes.isEmpty() ||
@@ -905,6 +905,7 @@ public class Compiler extends AbstractCompiler {
     startPass("stripCode");
     StripCode r = new StripCode(this, stripTypes, stripNameSuffixes,
         stripTypePrefixes, stripNamePrefixes);
+    r.enableConsoleStripping();
     if (options.getTweakProcessing().shouldStrip()) {
       r.enableTweakStripping();
     }

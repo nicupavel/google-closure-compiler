@@ -659,6 +659,9 @@ public class CompilerOptions implements Serializable, Cloneable {
   /** Replacements for tweaks. Will be Boolean, Numbers, or Strings */
   private Map<String, Object> tweakReplacements;
 
+  /** Remove calls to console */
+  public boolean removeConsoleCalls;
+
   /** Move top-level function declarations to the top */
   public boolean moveFunctionDeclarations;
 
@@ -983,6 +986,7 @@ public class CompilerOptions implements Serializable, Cloneable {
     closurePass = false;
     jqueryPass = false;
     angularPass = false;
+    removeConsoleCalls = true;
     removeAbstractMethods = true;
     removeClosureAsserts = false;
     stripTypes = Collections.emptySet();
